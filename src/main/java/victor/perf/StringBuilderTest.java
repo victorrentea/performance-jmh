@@ -50,8 +50,12 @@
 //    @Benchmark
 //    public String list10K_plus() {
 //        String s = "";
-//        for (int i = 0; i < N; i++) {
+//        for (int i = 0; i < N; i+=5) {
 //            s+=" " + i;
+//            s+=" " + (i+1);
+//            s+=" " + (i+2);
+//            s+=" " + (i+3);
+//            s+=" " + (i+4);
 //        }
 //        return s.substring(1);
 //    }

@@ -38,7 +38,9 @@ public class StreamsCPUOnlyTest {
    public int forClassic() {
       int sum = 0;
       for (int n : numbers) {
-         sum += cpuOnlyTask(n);
+         if (n % 2 == 0) {
+            sum += cpuOnlyTask(n);
+         }
       }
       return sum;
    }
@@ -46,6 +48,7 @@ public class StreamsCPUOnlyTest {
    @Benchmark
    public long stream() {
       return numbers.stream()
+          .filter(n -> n % 2 == 0)
           .map(this::cpuOnlyTask)
           .count();
    }
@@ -53,6 +56,7 @@ public class StreamsCPUOnlyTest {
    @Benchmark
    public long streamParallel() {
       return numbers.parallelStream()
+          .filter(n -> n % 2 == 0)
           .map(this::cpuOnlyTask)
           .count();
    }
@@ -60,6 +64,7 @@ public class StreamsCPUOnlyTest {
    //   @Benchmark
    public Long fluxSingleThread() {
       return Flux.fromIterable(numbers)
+          .filter(n -> n % 2 == 0)
           .map(this::cpuOnlyTask)
           .count()
           .block();
@@ -93,7 +98,7 @@ public class StreamsCPUOnlyTest {
             return (int) sqrt(n);
          case "heavy":
             double sum = 0;
-            for (int i = n * 500; i < (n + 1) * 500; i++) {
+            for (int i = n * 1000; i < (n + 1) * 1000; i++) {
                sum += sqrt(i);
             }
             return (int) sum;

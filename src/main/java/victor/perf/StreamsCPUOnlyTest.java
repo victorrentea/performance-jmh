@@ -44,6 +44,17 @@
 //      }
 //      return sum;
 //   }
+//   @Benchmark
+//   public int forI() {
+//      int sum = 0;
+//      for (int i = 0, numbersSize = numbers.size(); i < numbersSize; i++) {
+//         int n = numbers.get(i);
+//         if (n % 2 == 0) {
+//            sum += cpuOnlyTask(n);
+//         }
+//      }
+//      return sum;
+//   }
 //
 //   @Benchmark
 //   public long stream() {

@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 import static java.lang.Math.sqrt;
+import static java.lang.System.currentTimeMillis;
 import static java.util.stream.Collectors.toList;
 
 @State(Scope.Thread)
@@ -22,10 +23,10 @@ public class StreamsCPUOnlyTest {
 
 
    @Param({"100", "10000"/*, "1000000"*/})
-   public int n_items;
+    int n_items;
 
    @Param({"light", "heavy"})
-   public String cpu_intensity;
+    String cpu_intensity;
 
    private List<Integer> numbers;
 
@@ -34,6 +35,9 @@ public class StreamsCPUOnlyTest {
       numbers = IntStream.range(0, n_items).boxed().collect(toList());
    }
 
+
+   // TODO copiaza-ti aici bucata de cod Java despre care CREZI ca poti sa o faci tu muritor de rand mai rapida. si JIT nu poate.
+   //  KO colegului
    @Benchmark
    public int forClassic() {
       int sum = 0;
@@ -58,6 +62,8 @@ public class StreamsCPUOnlyTest {
 
    @Benchmark
    public long stream() {
+//      repo.find(); // 3s 100k
+//      api.call(); // 100ms
       return numbers.stream()
           .filter(n -> n % 2 == 0)
           .map(this::cpuOnlyTask)

@@ -11,7 +11,7 @@
 //@Warmup(iterations = 5, time = 1000, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 10, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class WebClientTest {
+//public class WebClientBenchmark {
 //
 //   @Benchmark
 //   public WebClient webClient() {

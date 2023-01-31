@@ -2,7 +2,6 @@
 //
 //import org.openjdk.jmh.annotations.*;
 //
-//import java.lang.reflect.Method;
 //import java.util.Optional;
 //import java.util.concurrent.TimeUnit;
 //import java.util.concurrent.atomic.AtomicInteger;
@@ -13,7 +12,7 @@
 //@Warmup(iterations = 5, time = 1000, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 20, time = 2000, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class OptionalCost {
+//public class OptionalCostBenchmark {
 //
 //   private AtomicInteger counter = new AtomicInteger(0);
 //

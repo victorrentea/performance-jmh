@@ -11,7 +11,7 @@
 //@Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 20, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class StringBuilderTest {
+//public class StringBuilderBenchmark {
 //    public static final int N = 10_000;
 //
 //    @Benchmark

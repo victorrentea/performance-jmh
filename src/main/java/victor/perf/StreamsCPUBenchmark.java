@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 import static java.lang.Math.sqrt;
-import static java.lang.System.currentTimeMillis;
 import static java.util.stream.Collectors.toList;
 
 @State(Scope.Thread)
@@ -19,7 +18,7 @@ import static java.util.stream.Collectors.toList;
 @Warmup(iterations = 5, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 @Measurement(iterations = 15, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 @Fork(1)
-public class StreamsCPUOnlyTest {
+public class StreamsCPUBenchmark {
 
 
    @Param({"100", "10000"/*, "1000000"*/})
@@ -39,17 +38,7 @@ public class StreamsCPUOnlyTest {
    // TODO copiaza-ti aici bucata de cod Java despre care CREZI ca poti sa o faci tu muritor de rand mai rapida. si JIT nu poate.
    //  KO colegului
    @Benchmark
-   public int forClassic() {
-      int sum = 0;
-      for (int n : numbers) {
-         if (n % 2 == 0) {
-            sum += cpuOnlyTask(n);
-         }
-      }
-      return sum;
-   }
-   @Benchmark
-   public int forI() {
+   public int forIndex() {
       int sum = 0;
       for (int i = 0, numbersSize = numbers.size(); i < numbersSize; i++) {
          int n = numbers.get(i);
@@ -59,23 +48,31 @@ public class StreamsCPUOnlyTest {
       }
       return sum;
    }
+   @Benchmark
+   public int for5() {
+      int sum = 0;
+      for (int n : numbers) {
+         if (n % 2 == 0) {
+            sum += cpuOnlyTask(n);
+         }
+      }
+      return sum;
+   }
 
    @Benchmark
    public long stream() {
-//      repo.find(); // 3s 100k
-//      api.call(); // 100ms
       return numbers.stream()
           .filter(n -> n % 2 == 0)
-          .map(this::cpuOnlyTask)
-          .count();
+          .mapToInt(this::cpuOnlyTask)
+          .sum();
    }
 
    @Benchmark
    public long streamParallel() {
       return numbers.parallelStream()
           .filter(n -> n % 2 == 0)
-          .map(this::cpuOnlyTask)
-          .count();
+          .mapToInt(this::cpuOnlyTask)
+          .sum();
    }
 
    //   @Benchmark

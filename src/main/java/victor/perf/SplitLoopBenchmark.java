@@ -17,9 +17,9 @@
 //@Warmup(iterations = 5, time = 400, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 15, time = 400, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class SplitLoopTest {
+//public class SplitLoopBenchmark {
 //
-//   private static final Logger log = LoggerFactory.getLogger(SplitLoopTest.class);
+//   private static final Logger log = LoggerFactory.getLogger(SplitLoopBenchmark.class);
 //
 //   @Param({"100", "10000"})
 //   public int n_items;

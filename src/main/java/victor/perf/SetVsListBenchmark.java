@@ -11,7 +11,7 @@
 //@Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 20, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class SetVsListTest {
+//public class SetVsListBenchmark {
 //    private int addAndSum(Collection<Integer> list) {
 //        for (int i = 0; i < 1000; i++) {
 //            list.add(i);

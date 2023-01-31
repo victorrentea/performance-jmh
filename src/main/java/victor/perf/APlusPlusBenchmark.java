@@ -4,7 +4,6 @@
 //
 //import java.util.concurrent.ExecutionException;
 //import java.util.concurrent.TimeUnit;
-//import java.util.stream.IntStream;
 //
 //import static java.util.concurrent.CompletableFuture.supplyAsync;
 //
@@ -14,7 +13,7 @@
 //@Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 50, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class APlusPlusTest {
+//public class APlusPlusBenchmark {
 //
 //   public static int population;
 //   private static final Object MONITOR = new Object();

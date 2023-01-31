@@ -13,7 +13,7 @@
 //@Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 50, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class SwitchVsMapTest {
+//public class SwitchVsMapBenchmark {
 //
 //   private static final Map<String, Integer> MAP = new HashMap<>(); // 10 keys
 //	static {

@@ -12,7 +12,7 @@
 //@Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 20, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class FizzBuzzTest {
+//public class FizzBuzzBenchmark {
 ////    @Benchmark
 ////    public String original() {
 ////        return FizzFuzzOriginal.f().toString();

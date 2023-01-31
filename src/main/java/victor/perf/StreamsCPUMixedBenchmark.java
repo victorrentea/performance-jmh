@@ -13,7 +13,7 @@
 //@Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 50, time = 200, timeUnit = TimeUnit.MILLISECONDS)
 //@Fork(1)
-//public class StreamsCPUMixedTest {
+//public class StreamsCPUMixedBenchmark {
 //
 //
 //	private static final int PARALLEL_REQUESTS_COUNT = 10; // try 4, 10

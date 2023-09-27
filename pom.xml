@@ -97,15 +97,13 @@
         <version>2.0.5.RELEASE</version>
       </plugin> -->
         <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <compilerVersion>${java.version}</compilerVersion>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <release>11</release>  <!--or <release>10</release>-->
+            </configuration>
+        </plugin>
 
              <plugin>
               <artifactId>maven-assembly-plugin</artifactId>

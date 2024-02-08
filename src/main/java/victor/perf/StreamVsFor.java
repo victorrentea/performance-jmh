@@ -36,7 +36,7 @@ public class StreamVsFor {
   }
 
   @Benchmark
-  public void _0_taskForOneItem() {
+  public void _0_oneTask() {
     Blackhole.consumeCPU(cpuTokens);
   }
 

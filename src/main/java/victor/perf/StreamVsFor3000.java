@@ -1,5 +1,6 @@
 package victor.perf;
 
+import org.jooq.lambda.tuple.Tuple2;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class StreamVsFor3000 {
 //        .flatMap(academyLevel -> getAwardList(academyLevel)._3_stream())
 //        .collect(groupingBy(Award::getAwardValue));
 //  }
-  Map<Slot, List<Level>> levelCache = new HashMap<>();
+  Map<Tuple2<Integer, Slot>, List<Level>> levelCache = new HashMap<>();
   Map<Level, List<Award>> awardCache = new HashMap<>();
   List<Slot> slots = new ArrayList<>();
 
-  @Param({"100"/*, "200"*/})
+  @Param({/*"50", */"100"})
   int collection_size;
   @Setup
   public void setup() {
@@ -49,12 +50,17 @@ public class StreamVsFor3000 {
         levels.add(level);
         List<Award> awards = new ArrayList<>();
         for (int k = 0; k < 5; k++) {
-          Award award = new Award(av[(ii++) % av.length]);
+          Award award = new Award(av[ii % av.length]);
+          ii++;
           awards.add(award);
         }
         awardCache.put(level, awards);
       }
-      levelCache.put(slot, levels);
+      levelCache.put(new Tuple2<>(13,slot), levels);
+    }
+    // add extra noise to Map<Tuple>
+    for (int i = 0; i < 1000; i++) {
+      levelCache.put(new Tuple2<>(i, new Slot()), new ArrayList<>());
     }
   }
 
@@ -75,7 +81,7 @@ public class StreamVsFor3000 {
   // return a map with 5 keys->List.size=600
   public Map<AwardValue, List<Award>> streams() {
     return slots.stream()
-        .flatMap(slot -> levelCache.get(slot).stream())
+        .flatMap(slot -> levelCache.get(new Tuple2<>(13,slot)).stream())
         .flatMap(level -> awardCache.get(level).stream())
         .collect(groupingBy(Award::getAwardValue));
   }
@@ -84,7 +90,7 @@ public class StreamVsFor3000 {
   public Map<AwardValue, List<Award>> fors() {
     Map<AwardValue, List<Award>> collect = new HashMap<>();
     for (Slot slot : slots) {
-      for (Level level : levelCache.get(slot)) {
+      for (Level level : levelCache.get(new Tuple2<>(13,slot))) {
         for (Award award : awardCache.get(level)) {
           collect.computeIfAbsent(award.getAwardValue(), k -> new java.util.ArrayList<>()).add(award);
         }

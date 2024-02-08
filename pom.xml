@@ -99,7 +99,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>21</release>  <!--or <release>10</release>-->
+                    <release>17</release>  <!--or <release>10</release>-->
                 </configuration>
             </plugin>
 

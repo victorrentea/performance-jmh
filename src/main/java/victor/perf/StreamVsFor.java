@@ -17,7 +17,8 @@ import static java.util.stream.Collectors.toList;
 
 // throw away runs prior to the measurements to allow JIT to optimize code
 @Warmup(iterations = 3, time = 100, timeUnit = MILLISECONDS)
-//between runs, JMH runs GC to apublic void pauses during experiments
+
+// JMH runs GC between iterations to avoid pauses during experiments
 
 // during which call in a loop the @Benchmarks bellow
 @Measurement(iterations = 5, time = 100, timeUnit = MILLISECONDS)

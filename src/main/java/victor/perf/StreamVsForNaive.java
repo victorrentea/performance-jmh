@@ -3,10 +3,10 @@ package victor.perf;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class StreamVsFor_NAIVE {
+public class StreamVsForNaive {
   public static void main(String[] args) {
     // create the collection before the bench
-    List<Integer> numbers = IntStream.range(0, 1000).boxed().toList();
+    List<Integer> numbers = IntStream.range(0, 10000).boxed().toList();
 
     long start = System.currentTimeMillis();
     long sum = 0;

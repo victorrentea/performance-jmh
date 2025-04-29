@@ -23,7 +23,6 @@ import static java.util.stream.Collectors.toList;
 // during which call in a loop the @Benchmarks bellow
 @Measurement(iterations = 5, time = 100, timeUnit = MILLISECONDS)
 public class StreamVsFor {
-
   @Param({"100", "10000"})
   private int list_size;
 
@@ -42,7 +41,7 @@ public class StreamVsFor {
   }
 
   @Benchmark
-  public int _1_for_i() { // pre-java 5
+  public int a__for_i() { // pre-java 5
     int sum = 0;
     for (int i = 0; i < numbers.size(); i++) {
       if (numbers.get(i) % 2 == 0) {
@@ -53,7 +52,7 @@ public class StreamVsFor {
   }
 
   @Benchmark
-  public int _2_for() {
+  public int b__for5() {
     int sum = 0;
     for (int n : numbers) {
       if (n % 2 == 0) {
@@ -64,7 +63,7 @@ public class StreamVsFor {
   }
 
   @Benchmark
-  public long _3_stream() {
+  public long c__stream() {
     return numbers.stream()
         .filter(n -> n % 2 == 0)
         .mapToInt(n -> cpuOnlyTask(n))
@@ -72,7 +71,7 @@ public class StreamVsFor {
   }
 
   @Benchmark
-  public long _4_parallelStream() {
+  public long d__parallelStream() {
     return numbers.parallelStream()
         .filter(n -> n % 2 == 0)
         .mapToInt(this::cpuOnlyTask)
@@ -85,7 +84,7 @@ public class StreamVsFor {
   }
 
   @Benchmark
-  public void _0_work_for_one_element() {
+  public void __work_for_one_element() {
     Blackhole.consumeCPU(cpuTokens); // calibrating work/element
   }
 
